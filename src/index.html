@@ -1,12 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>webpack starterkit</title>
-</head>
-<body>
-  <h1>webpack starter</h1>
-  <p>✨ A lightweight foundation for your next webpack based frontend project.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Issue Tracker</title>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="navbar-fixed">
+      <nav class="nav-extended darken-1">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">
+              Issue Tracker
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="add-issue">
+          <div class="card-panel">
+            <form>
+              <div class="row">
+                <div class="col s12">
+                  <h5>
+                    Add an Issue to track
+                  </h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="issue" type="text" class="validate" required />
+                  <label for="issue">Issue Description</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <select id="priority">
+                    <option value="low" selected>Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                  <label>Choose a Priority</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="assignee" type="text" class="validate" required />
+                  <label for="assignee">Assignee</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <button
+                    class="btn waves-effect waves-light"
+                    type="submit"
+                    name="action"
+                  >
+                    Submit
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="all-issues" id="all-issues"></div>
+      </div>
+    </main>
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+          &copy; 2020 Issue Tracker
+          <a
+            class="grey-text text-lighten-4 right"
+            href="https://github.com/shubhambattoo"
+            >Shubham Battoo</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
 </html>

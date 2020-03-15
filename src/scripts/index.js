@@ -1,6 +1,11 @@
 import '../styles/index.scss';
-import { addTracker, getAllIssues, closeIssue } from './trackerService';
 import { setUpHtml } from './render';
+import {
+  addTracker,
+  getAllIssues,
+  closeIssue,
+  deleteIssue
+} from './trackerService';
 
 // initialising selects
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,6 +20,8 @@ const assignee = document.getElementById('assignee');
 const addForm = document.forms[0];
 const allIssues = document.getElementById('all-issues');
 
+render();
+
 addForm.addEventListener('submit', e => {
   e.preventDefault();
   if (!desc.value && !priority.value && !assignee.value) {
@@ -28,9 +35,9 @@ addForm.addEventListener('submit', e => {
   };
   const issue = addTracker(data);
   if (issue) {
-    desc.value = null;
-    priority.value = null;
-    assignee.value = null;
+    desc.value = '';
+    priority.value = '';
+    assignee.value = '';
     render();
   }
 });
@@ -40,4 +47,28 @@ function render() {
   allIssues.innerHTML = setUpHtml(issues);
 }
 
-render();
+function closeBtn(id) {
+  const val = closeIssue(id);
+  if (val) {
+    render();
+  }
+}
+
+function deleteBtn(id) {
+  const val = deleteIssue(id);
+  if (val) {
+    render();
+  }
+}
+
+allIssues.addEventListener('click', function(e) {
+  const classNames = e.target.className.split(' ');
+  const { id } = e.target.dataset;
+  if (classNames.includes('close')) {
+    // close the task
+    closeBtn(id);
+  } else if (classNames.includes('delete')) {
+    // delete the task
+    deleteBtn(id);
+  }
+});

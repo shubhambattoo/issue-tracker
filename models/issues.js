@@ -2,6 +2,11 @@ const sequelize = require('../db/mysql');
 const { DataTypes } = require('sequelize');
 
 const Issue = sequelize.define('issue', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncreament: true
+  },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,

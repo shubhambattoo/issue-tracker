@@ -1,7 +1,7 @@
 const sequelize = require('../db/mysql');
 const { DataTypes } = require('sequelize');
 
-const Issue = sequelize.define('issue', {
+const Issue = sequelize.define('issues', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -22,14 +22,7 @@ const Issue = sequelize.define('issue', {
   isOpen: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-  },
-  created: {
-    type: DataTypes.TimeStamp,
-    allowNull: false,
-  },
-  updated: {
-    type: DataTypes.TimeStamp,
-    allowNull: false,
+    defaultValue: true
   },
 });
 

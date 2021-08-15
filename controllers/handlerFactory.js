@@ -17,6 +17,7 @@ exports.getAll = (Model, name = 'data') =>
 
     res.json({
       status: 'ok',
+      total: 0,
       results: docs.length,
       [name]: docs,
     });
@@ -57,5 +58,21 @@ exports.deleteOne = (Model) =>
     res.status(204).json({
       status: 'ok',
       data: null,
+    });
+  });
+
+exports.getOne = (Model, name = 'data') =>
+  catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+
+    const doc = await Model.findOne({ where: { id } });
+
+    if (!doc) {
+      return next(new AppError(`No document found with that ID`, 404));
+    }
+
+    res.json({
+      status: 'ok',
+      [name]: doc,
     });
   });

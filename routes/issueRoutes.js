@@ -9,6 +9,7 @@ router
 
 router
   .route('/:id')
+  .get(issueController.getIssue)
   .put(issueController.updateIssue)
   .delete(issueController.deleteIssue);
 

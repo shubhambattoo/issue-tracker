@@ -8,3 +8,5 @@ exports.createIssue = factory.createOne(Issue, 'issue');
 exports.updateIssue = factory.updateOne(Issue, 'issue');
 
 exports.deleteIssue = factory.deleteOne(Issue);
+
+exports.getIssue = factory.getOne(Issue, 'issue');
